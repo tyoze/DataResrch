@@ -22,14 +22,20 @@ def boxplot(list):
 
 
 print(boxplot(MaleLoan),boxplot(FemaleLoan))
+def quadreg(Verg1, Verg2):
+    model1 = np.poly1d(np.polyfit([(i*100)/(len(Verg1)) for i in range(len(sorted(Verg1)))],sorted(Verg1), 3))
+    model2 = np.poly1d(np.polyfit([(i*100)/(len(Verg2)) for i in range(len(sorted(Verg2)))],sorted(Verg2), 3))
+    polyline = np.linspace(1, 100, 50)
 
-graph = [MaleLoan,FemaleLoan]
-fig, ax1 = plt.subplots()
-
-ax1.boxplot(graph, showfliers=False)
+    fig, (ax1,ax2) = plt.subplots(2)
+    ax1.scatter([(i*100)/(len(Verg1)) for i in range(len(sorted(Verg1)))],sorted(Verg1), alpha=0.1)
+    ax1.plot(polyline,model1(polyline), color='b')
+    ax2.scatter([(i*100)/(len(Verg2)) for i in range(len(sorted(Verg2)))],sorted(Verg2),alpha=0.1)
+    ax2.plot(polyline,model2(polyline),color='r')
+    print(model1,model2)
 
 
 #print([item.get_ydata() for item in ax1.boxplot(sorted(MaleLoan))['whiskers']], [item.get_ydata() for item in ax2.boxplot(sorted(FemaleLoan))['whiskers']])
-print([item.get_ydata() for item in ax1.boxplot(graph)['whiskers']])
+#print([item.get_ydata() for item in ax1.boxplot(graph)['whiskers']])
 
 plt.show()
