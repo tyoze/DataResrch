@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-Data = pd.read_csv(r'C:\Users\admin\OneDrive\Documenten\DataSets\train_u6lujuX_CVtuZ9i.csv')
+Data = pd.read_csv(r'train_u6lujuX_CVtuZ9i.csv')
 
 def boxplot(list):
     return (np.median(list),np.percentile(list, 25),np.percentile(list, 75))
