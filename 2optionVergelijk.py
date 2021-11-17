@@ -53,18 +53,19 @@ def VergelijkenMetLoanAmount(Var1, trueword, falseword):
             del (K[0])
             ListNeg.append(loanamount[i])
 
-    quadreg(ListPos,ListNeg,Var1,trueword,falseword)
+    #quadreg(ListPos,ListNeg,Var1,trueword,falseword)
 
-    #graph = [sorted(ListPos), sorted(ListNeg)]
-   # fig, ax1 = plt.subplots()
+    graph = [sorted(ListPos), sorted(ListNeg)]
+    fig, ax1 = plt.subplots()
 
     #ax1.boxplot(graph, showfliers=False)
-    #ax1.set_title(label=Var1)
+    ax1.set_title(label=Var1)
 
-    #return ([item.get_ydata() for item in ax1.boxplot(graph, showfliers=False)['whiskers']],boxplot(ListPos),boxplot(ListNeg))
+    return ([item.get_ydata() for item in ax1.boxplot(graph, showfliers=False)['whiskers']],boxplot(ListPos),boxplot(ListNeg))
 
 
 print(VergelijkenMetLoanAmount('Gender', 'Male', 'Female'),VergelijkenMetLoanAmount('Married', 'Yes', 'No')
       ,VergelijkenMetLoanAmount('Education', 'Graduate', 'Not Graduate'),VergelijkenMetLoanAmount('Self_Employed', 'Yes', 'No')
       ,VergelijkenMetLoanAmount('Credit_History', 1,0), sep='\n')
 
+plt.show()
