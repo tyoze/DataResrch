@@ -57,8 +57,6 @@ def VergelijkenMetLoanAmount(Var1, trueword, falseword):
 
     graph = [sorted(ListPos), sorted(ListNeg)]
     fig, ax1 = plt.subplots()
-
-    #ax1.boxplot(graph, showfliers=False)
     ax1.set_title(label=Var1)
 
     return ([item.get_ydata() for item in ax1.boxplot(graph, showfliers=False)['whiskers']],boxplot(ListPos),boxplot(ListNeg))
