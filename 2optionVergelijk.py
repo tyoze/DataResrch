@@ -36,8 +36,6 @@ def VergelijkenMetLoanAmount(Var1, trueword, falseword):
     Interessant = [Var1, 'LoanAmount']
     data = Data[Interessant].dropna()
 
-
-    #winkel =list(data[Var1]),list(data['LoanAmount'])
     plotVar = list(data[Var1])
     loanamount = list(data['LoanAmount'])
 
