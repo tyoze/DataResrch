@@ -3,13 +3,22 @@ from sklearn.linear_model import LinearRegression
 
 Testcsv = pd.read_csv(r'test_Y3wMUE5_7gLdaTN.csv')
 Data = pd.read_csv(r'train_u6lujuX_CVtuZ9i.csv')
-Interessant = ['ApplicantIncome','CoapplicantIncome', 'LoanAmount']
+Nodig = ['ApplicantIncome', 'CoapplicantIncome', 'LoanAmount', 'Education', 'Self_Employed', 'Married']
+Intressant = ['ApplicantIncome', 'CoapplicantIncome', 'Education', 'Self_Employed', 'Married']
 
-Testdata = Testcsv[Interessant].dropna()
-data = Data[Interessant].dropna()
+Testdata = Testcsv[Nodig].dropna()
+data = Data[Nodig].dropna()
 
-X_train, Y_train, X_test, Y_test = data[['ApplicantIncome','CoapplicantIncome']], data['LoanAmount']\
-    , Testdata[['ApplicantIncome','CoapplicantIncome']], Testdata['LoanAmount']
+data.replace(to_replace=['Male', 'Female'], value=[1, 0], inplace=True)
+data.replace(to_replace=['Yes', 'No'], value=[1, 0], inplace=True)
+data.replace(to_replace=['Graduate', 'Not Graduate'], value=[1, 0], inplace=True)
+
+Testdata.replace(to_replace=['Male', 'Female'], value=[1, 0], inplace=True)
+Testdata.replace(to_replace=['Yes', 'No'], value=[1, 0], inplace=True)
+Testdata.replace(to_replace=['Graduate', 'Not Graduate'], value=[1, 0], inplace=True)
+
+X_train, Y_train, X_test, Y_test = data[Intressant], data['LoanAmount']\
+    , Testdata[Intressant], Testdata['LoanAmount']
 
 lr = LinearRegression()
 lr.fit(X_train,Y_train)
