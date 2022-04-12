@@ -7,7 +7,6 @@ Data = pd.read_csv(r'train_u6lujuX_CVtuZ9i.csv')
 def boxplot(list):
     return (np.median(list),np.percentile(list, 25),np.percentile(list, 75))
 
-
 def quadreg(Verg1, Verg2,title,Uppersubtitle,lowersubtitle):
     model1 = np.poly1d(np.polyfit([(i * 100) / (len(Verg1)) for i in range(len(sorted(Verg1)))], sorted(Verg1), 3))
     model2 = np.poly1d(np.polyfit([(i * 100) / (len(Verg2)) for i in range(len(sorted(Verg2)))], sorted(Verg2), 3))
@@ -24,13 +23,6 @@ def quadreg(Verg1, Verg2,title,Uppersubtitle,lowersubtitle):
     ax2.set_title(lowersubtitle)
     print(model1, model2,sep='\n')
     plt.show()
-
-class MijnDataset:
-    pass
-    #Gender
-    #LoanAmount
-    #Married
-
 
 def VergelijkenMetLoanAmount(Var1, trueword, falseword):
     Interessant = [Var1, 'LoanAmount']
@@ -50,7 +42,6 @@ def VergelijkenMetLoanAmount(Var1, trueword, falseword):
         elif K[0] == falseword:
             del (K[0])
             ListNeg.append(loanamount[i])
-
     #quadreg(ListPos,ListNeg,Var1,trueword,falseword)
 
     graph = [sorted(ListPos), sorted(ListNeg)]
@@ -58,7 +49,6 @@ def VergelijkenMetLoanAmount(Var1, trueword, falseword):
     ax1.set_title(label=Var1)
 
     return ([item.get_ydata() for item in ax1.boxplot(graph, showfliers=False)['whiskers']],boxplot(ListPos),boxplot(ListNeg))
-
 
 print(VergelijkenMetLoanAmount('Gender', 'Male', 'Female'),VergelijkenMetLoanAmount('Married', 'Yes', 'No')
       ,VergelijkenMetLoanAmount('Education', 'Graduate', 'Not Graduate'),VergelijkenMetLoanAmount('Self_Employed', 'Yes', 'No')

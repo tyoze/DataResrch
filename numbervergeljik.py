@@ -7,7 +7,7 @@ def VergelijkenMetLoanAmount(Var1):
     Interessant = [Var1, 'LoanAmount']
     data = Data[Interessant].dropna()
 
-    plt.scatter(data['LoanAmount'],data[Var1], alpha= 0.5)
+    plt.scatter(data['LoanAmount'],data[Var1], 5, alpha= 0.5)
 
 
 
